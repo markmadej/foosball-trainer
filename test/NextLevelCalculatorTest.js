@@ -69,4 +69,52 @@ describe('Next Level Calculator Tests - More than 10 shots', function() {
         var nextLevel = levelCalc.nextLevel(history);
         assert(nextLevel == 4, "Next level was not calculated properly : " + nextLevel);
   });
+    it('level should increase if you shot over 70% in the last 10 shots at this level', function() {
+        var history =
+            {
+                "shotHistory":
+                    [ {"hole": "pull","timeElapsed": 1234,"level": 1,"scored": 1},
+                        {"hole": "pull","timeElapsed": 1234,"level": 2,"scored": 1},
+                        {"hole": "pull","timeElapsed": 1234,"level": 3,"scored": 1},
+                        {"hole": "pull","timeElapsed": 1234,"level": 4,"scored": 0},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 0},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 1},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 1},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 1},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 1},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 1},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 1},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 1},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 1},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 0},
+                    ]
+            };
+
+        var nextLevel = levelCalc.nextLevel(history);
+        assert(nextLevel == 6, "Next level was not calculated properly : " + nextLevel);
+    });
+    it('level should decrease if you shot < 40% in the last 10 shots at this level', function() {
+        var history =
+            {
+                "shotHistory":
+                    [ {"hole": "pull","timeElapsed": 1234,"level": 1,"scored": 1},
+                        {"hole": "pull","timeElapsed": 1234,"level": 2,"scored": 1},
+                        {"hole": "pull","timeElapsed": 1234,"level": 3,"scored": 1},
+                        {"hole": "pull","timeElapsed": 1234,"level": 4,"scored": 0},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 0},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 1},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 1},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 1},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 0},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 0},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 0},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 0},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 0},
+                        {"hole": "pull","timeElapsed": 1234,"level": 5,"scored": 0},
+                    ]
+            };
+
+        var nextLevel = levelCalc.nextLevel(history);
+        assert(nextLevel == 4, "Next level was not calculated properly : " + nextLevel);
+    });
 });
