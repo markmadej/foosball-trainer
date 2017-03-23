@@ -1,0 +1,24 @@
+@startuml
+
+title Next Shot Calculator \n
+
+(*) --> "Set Initial Level = 1" as l1
+l1 --> "Total Shots < 10?" as l10
+
+l10 -->[Yes] "Shoot random pull/push\nat current level\n(total shots++)" as rpp1
+
+rpp1-->[Score] "Increase Level by 1" as incInitLev
+incInitLev --> l10
+rpp1-->[Miss] l10
+
+l10-->[No] "Shot 10 consecutive shots at this level?" as s10
+s10 -->[No] "Shoot random pull/push\nat current level" as rpp2
+rpp2 --> s10
+s10 -->[Yes] "Shot over 70% in last 10 shots at this level?" as o70
+o70 -->[Yes] "Increase Level by 1" as l1_2
+l1_2-->s10
+o70 -->[No] "Shot under 40% in last 10 shots at this level?" as u40
+u40-->[No] s10
+u40-->[Yes] "Decrease Level by 1" as dl1
+dl1-->s10
+@enduml

@@ -1,0 +1,93 @@
+#root {
+    margin: 0;
+    height: 100%;
+}
+
+.button-shot {
+    color : black;
+    flex : 1;
+    flex-basis: 50%;
+    font-size: 12vw;
+    align-self: stretch;
+}
+
+.button-reset {
+    flex: 2;
+    flex-basis: 50%;
+}
+
+.button-score {
+    background-color: green;
+    margin-right: 5px;
+}
+
+.button-miss {
+    background-color: red;
+}
+
+.button-shot:disabled {
+    color: darkgray;
+    background-color: grey;
+}
+
+.button-reset {
+    background-color: orange;
+    font-size: 8vw;
+}
+
+.div-status-meter {
+    color: yellow;
+    font-size: 4vw;
+    flex: 1;
+    flex-basis: 25%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border: yellow;
+    border-width: 3px;
+    border-style: solid;
+    margin-right: 5px;
+
+}
+
+.p-status {
+    flex: 1;
+}
+
+.p-level {
+    color: yellow;
+    flex: 1;
+    border: yellow;
+    border-width: 3px;
+    border-style: solid;
+    font-size: 12vw;
+    text-align: center;
+    align-self: stretch;
+    margin: 0 auto;
+}
+
+.p-instruction {
+    color: yellow;
+    flex: 3;
+    margin: 0;
+    font-size: 7vw;
+    text-align: center;
+}
+
+.div-main-section {
+    flex: 1;
+    display: flex;
+    align-self: stretch;
+    justify-content: center;
+    margin: 5px;
+}
+
+.div-outer-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.div-shot-buttons {
+    display: flex;
+}
