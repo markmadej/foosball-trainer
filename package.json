@@ -15,5 +15,9 @@
     "test": "react-scripts test --env=jsdom",
     "shot-test": "mocha",
     "eject": "react-scripts eject"
+  },
+  "engines": {
+    "node": "6.9.4",
+    "npm": "3.10.10"
   }
 }
