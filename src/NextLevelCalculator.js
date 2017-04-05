@@ -17,8 +17,18 @@ function nextLevelCalculator() {
       The assumption is that the last record in shotHistory is the last
       shot taken, second last array element is the second last shot, etc.
     */
+    const MAX_DELAY_MS = 10000;  //10 seconds
+
   this.getMaxLevel = function() {
     return 10;
+  }
+
+  this.getRandomDelay = function() {
+
+    // Return random number of milliseconds, up to MAX_DELAY seconds
+      var min = 0;
+      var max = MAX_DELAY_MS;
+      return Math.floor(Math.random() * (max - min)) + min;
   }
 
   this.nextLevel = function(history) {
@@ -44,9 +54,7 @@ function nextLevelCalculator() {
     var shotsScoredInLast10 = 0;
     for (var idx = history.shotHistory.length - 1; idx > history.shotHistory.length - 11; idx--) {
       shotsScoredInLast10 += history.shotHistory[idx].scored;
-      console.log("ssilT=" + shotsScoredInLast10 + ", idx=" + idx);
       if (history.shotHistory[idx].level != lastLevel) {
-        console.log("last level did not match on idx=" + idx + ", returning");
         return lastLevel;
       }
     }
@@ -54,7 +62,6 @@ function nextLevelCalculator() {
     /* Now, more than 10 shots have happened at the current level.  Determine if the level should stay
        the same, increase, or decrease.
      */
-    console.log("shots scored in last 10 = " + shotsScoredInLast10);
     if (shotsScoredInLast10 > 7) {
       return lastLevel + 1;
     }

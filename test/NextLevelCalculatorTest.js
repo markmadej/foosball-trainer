@@ -1,5 +1,5 @@
 var assert = require('assert');
-var nlc = require('../src/nextLevelCalculator');
+var nlc = require('../src/NextLevelCalculator');
 var levelCalc = new nlc();
 
 describe('Next Level Calculator Tests - Less than 10 shots', function() {

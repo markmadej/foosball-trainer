@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './FoosballTrainer.css';
+var nlc = require('../src/NextLevelCalculator');
+var levelCalc = new nlc();
 
 class Level extends Component {
     render() {
@@ -88,9 +90,23 @@ class FoosballTrainer extends Component {
     resetFunction = () => {
         console.log("Reset.");
         this.setState(prevState => ({
-           "reset": !prevState.reset
+           "reset": false
         }));
     };
+
+    generateShot() {
+        alert("sup doggy!!!!!!!");
+    };
+
+    readyFunction = () => {
+        console.log("Ready.");
+        this.setState(prevState => ({
+            "reset": true
+        }));
+        let delay = levelCalc.getRandomDelay();
+        setTimeout(this.generateShot, delay);
+    };
+
 
     render() {
         return(
@@ -106,7 +122,7 @@ class FoosballTrainer extends Component {
                 <div className='div-main-section'>
                     <StatusMeter meterType="Current" numScored={this.state.currentScored} numAttempts={this.state.currentAttempts}/>
                     <StatusMeter meterType="Overall" numScored={this.state.overallScored} numAttempts={this.state.overallAttempts}/>
-                    <ResetButton callback={this.resetFunction} resetting={this.state.reset}/>
+                    <ResetButton callback={this.state.reset === true ? this.readyFunction : this.resetFunction} resetting={this.state.reset}/>
                 </div>
             </div>
         );
