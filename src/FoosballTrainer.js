@@ -63,7 +63,14 @@ class FoosballTrainer extends Component {
 
     componentWillMount() {
         this.state = {
-            reset: true,
+            /*
+            "workflow" is the current state of the app.  It can have these values:
+            resetting - in the process of resetting the rods
+            waiting - waiting for new shot to be generated
+            shooting - shot generated, waiting for user to say whether they scored
+             */
+            workflow: 'resetting',
+
             level: 1,
             overallScored: 0,
             overallAttempts: 0,
@@ -100,11 +107,24 @@ class FoosballTrainer extends Component {
 
     readyFunction = () => {
         console.log("Ready.");
+
+        /*
+
+        The user clicked Ready, which means they are ready to go
+        and a shot should be generated.
+
+        From here we need to change the "Ready" button to the "Reset Rods"
+        button, and kick off the process to start a shot.
+
+        I will also add a workflow identifier in the state which tells us
+        we are awaiting the next shot.
+
+         */
         this.setState(prevState => ({
             "reset": true
         }));
-        let delay = levelCalc.getRandomDelay();
-        setTimeout(this.generateShot, delay);
+        //let delay = levelCalc.getRandomDelay();
+        //setTimeout(this.generateShot, delay);
     };
 
 

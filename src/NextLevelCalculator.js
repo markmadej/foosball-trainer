@@ -32,7 +32,7 @@ function nextLevelCalculator() {
   }
 
   this.nextLevel = function(history) {
-    if (history == undefined || history.shotHistory.length == 0) {
+    if (history === undefined || history.shotHistory.length === 0) {
       return 1;  // Default behavior for first shot
     }
 
@@ -54,7 +54,7 @@ function nextLevelCalculator() {
     var shotsScoredInLast10 = 0;
     for (var idx = history.shotHistory.length - 1; idx > history.shotHistory.length - 11; idx--) {
       shotsScoredInLast10 += history.shotHistory[idx].scored;
-      if (history.shotHistory[idx].level != lastLevel) {
+      if (history.shotHistory[idx].level !== lastLevel) {
         return lastLevel;
       }
     }
