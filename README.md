@@ -1,3 +1,5 @@
+## WARNING : This project is not in a good state at this point.  Please ignore.
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
